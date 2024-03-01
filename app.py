@@ -51,7 +51,7 @@ if st.button('Predict'):
     # 4. Display
     if result=="Fake":
         st.header("The news is Fake")
-    else if result=="Real":
+    elif result=="Real":
         st.header("The news is Real")
     else:
         st.header("Please enter a News first!!!")
