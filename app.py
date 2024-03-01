@@ -53,3 +53,5 @@ if st.button('Predict'):
             st.header("The news is Fake")
         else:
             st.header("The news is Real")
+if st.button('Clear Result'):
+    st.header(" ")
