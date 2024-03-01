@@ -46,7 +46,7 @@ if st.button('Predict'):
     if not input_news:
         st.header("Please enter a News first!!!")
     else:
-         1. preprocess
+         # 1. preprocess
         result=predict_news_authenticity(input_news)
         # 4. Display
         if result=="Fake":
