@@ -36,22 +36,26 @@ def predict_news_authenticity(news_text):
     else:
         return "Real"
 
-
-
 st.title("Fake News Detection")
 
 input_news = st.text_area("Enter the News")
 
-if st.button('Predict'):
+# Create two columns for buttons
+col1, col2 = st.beta_columns(2)
+
+# Place buttons in the first column
+if col1.button('Predict'):
     if not input_news:
         st.header("Please enter a News first!!!")
     else:
-         # 1. preprocess
-        result=predict_news_authenticity(input_news)
+        # 1. preprocess
+        result = predict_news_authenticity(input_news)
         # 4. Display
-        if result=="Fake":
+        if result == "Fake":
             st.header("The news is Fake")
         else:
             st.header("The news is Real")
-if st.button('Clear Result'):
+
+# Place button in the second column
+if col2.button('Clear Result'):
     st.header(" ")
