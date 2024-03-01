@@ -3,7 +3,7 @@ import string
 import pickle
 import streamlit as st
 import nltk
-nltk.data.path = ['C:/Users/arnab/AppData/Roaming/nltk_data/tokenizers/punkt/PY3']
+nltk.data.path = ['C:/Users/arnab/AppData/Roaming/nltk_data/tokenizers/punkt/PY3/english.pickle']
 from nltk.stem.porter import PorterStemmer
 from nltk import word_tokenize
 from nltk.corpus import stopwords
