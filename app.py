@@ -28,8 +28,6 @@ def preprocess_text(text):
 
 
 def predict_news_authenticity(news_text):
-    if(news_text==" "):
-        return "Empty"
     preprocessed_news_text = news_text
     prediction = model.predict([preprocessed_news_text])
 
@@ -45,13 +43,13 @@ st.title("Fake News Detection")
 input_news = st.text_area("Enter the News")
 
 if st.button('Predict'):
-
-    # 1. preprocess
-    result=predict_news_authenticity(input_news)
-    # 4. Display
-    if result=="Fake":
-        st.header("The news is Fake")
-    elif result=="Real":
-        st.header("The news is Real")
-    else:
+    if not input_news:
         st.header("Please enter a News first!!!")
+    else:
+         1. preprocess
+        result=predict_news_authenticity(input_news)
+        # 4. Display
+        if result=="Fake":
+            st.header("The news is Fake")
+        else:
+            st.header("The news is Real")
