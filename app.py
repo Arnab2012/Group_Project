@@ -28,7 +28,7 @@ def preprocess_text(text):
 
 
 def predict_news_authenticity(news_text):
-    preprocessed_news_text = preprocess_text(news_text)
+    preprocessed_news_text = news_text
     prediction = model.predict([preprocessed_news_text])
 
     if prediction == 0:
