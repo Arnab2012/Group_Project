@@ -41,7 +41,7 @@ st.title("Fake News Detection")
 input_news = st.text_area("Enter the News")
 
 # Create two columns for buttons
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 # Place buttons in the first column
 if col1.button('Predict'):
