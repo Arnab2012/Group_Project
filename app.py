@@ -31,12 +31,10 @@ def predict_news_authenticity(news_text):
     preprocessed_news_text = news_text
     prediction = model.predict([preprocessed_news_text])
 
-    # if prediction == 0:
-    #     return "Fake"
-    # else:
-    #     return "Real"
-
-    return prediction
+    if prediction == 0:
+        return "Fake"
+    else:
+        return "Real"
 
 st.title("Fake News Detection")
 
@@ -53,11 +51,10 @@ if col1.button('Predict'):
         #  preprocess
         result = predict_news_authenticity(input_news)
         #  Display
-        # if result == "Fake":
-        #     st.header("The news is Fake")
-        # else:
-        #     st.header("The news is Real")
-        st.header(result)
+        if result == "Fake":
+            st.header("The news is Fake")
+        else:
+            st.header("The news is Real")
 
 # Place button in the second column
 if col2.button('Clear Result'):
