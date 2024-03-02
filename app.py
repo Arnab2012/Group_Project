@@ -10,31 +10,33 @@ from nltk.corpus import stopwords
 
 model = pickle.load(open('model.pkl','rb'))
 
-def preprocess_text(text):
-    text = text.lower()
-    text = text.translate(str.maketrans('', '', string.punctuation))
+# def preprocess_text(text):
+#     text = text.lower()
+#     text = text.translate(str.maketrans('', '', string.punctuation))
 
-    tokens = word_tokenize(text)
+#     tokens = word_tokenize(text)
 
-    stop_words = set(stopwords.words('english'))
-    filtered_tokens = [word for word in tokens if word not in stop_words]
+#     stop_words = set(stopwords.words('english'))
+#     filtered_tokens = [word for word in tokens if word not in stop_words]
 
-    porter = PorterStemmer()
-    stemmed_tokens = [porter.stem(word) for word in filtered_tokens]
+#     porter = PorterStemmer()
+#     stemmed_tokens = [porter.stem(word) for word in filtered_tokens]
 
-    preprocessed_text = ' '.join(stemmed_tokens)
+#     preprocessed_text = ' '.join(stemmed_tokens)
 
-    return preprocessed_text
+#     return preprocessed_text
 
 
 def predict_news_authenticity(news_text):
     preprocessed_news_text = news_text
     prediction = model.predict([preprocessed_news_text])
 
-    if prediction == 0:
-        return "Fake"
-    else:
-        return "Real"
+    # if prediction == 0:
+    #     return "Fake"
+    # else:
+    #     return "Real"
+
+    return prediction
 
 st.title("Fake News Detection")
 
@@ -48,13 +50,14 @@ if col1.button('Predict'):
     if not input_news:
         st.header("Please enter a News first!!!")
     else:
-        # 1. preprocess
+        #  preprocess
         result = predict_news_authenticity(input_news)
-        # 4. Display
-        if result == "Fake":
-            st.header("The news is Fake")
-        else:
-            st.header("The news is Real")
+        #  Display
+        # if result == "Fake":
+        #     st.header("The news is Fake")
+        # else:
+        #     st.header("The news is Real")
+        st.header(result)
 
 # Place button in the second column
 if col2.button('Clear Result'):
