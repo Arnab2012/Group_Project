@@ -49,12 +49,13 @@ if col1.button('Predict'):
     if not input_news:
         st.header("Please enter a News first!!!")
     else:
-        result = predict_news_authenticity(input_news)
+        res = predict_news_authenticity(input_news)
         # if result == "Fake":
         #     st.header("The news is Fake")
         # else:
         #     st.header("The news is Real")
 
+        result = 1 / (1 + np.exp(-res))
         st.header(result)
 
 # Place button in the second column
