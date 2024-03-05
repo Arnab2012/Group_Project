@@ -63,4 +63,6 @@ if col1.button('Predict'):
 
 # Place button in the second column
 if col2.button('Clear Result'):
+    input_news="Hello"
     st.header(" ")
+    
