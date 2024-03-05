@@ -29,15 +29,16 @@ model = pickle.load(open('model.pkl','rb'))
 
 
 def predict_news_authenticity(news_text):
-    preprocessed_news_text = news_text
+    # preprocessed_news_text = news_text
     # prediction = model.predict([preprocessed_news_text])
-    prediction = model.decision_function([preprocessed_news_text])
+    prediction = model.decision_function([news_text])
 
     # if prediction == 0:
     #     return "Fake"
     # else:
     #     return "Real"
     return prediction
+    
 st.title("Fake News Detection")
 
 input_news = st.text_area("Enter the News")
@@ -57,7 +58,7 @@ if col1.button('Predict'):
         #     st.header("The news is Real")
 
         result = 1 / (1 + np.exp(-res))
-        st.header(result)
+        st.header("Result is"+str(round(result*100)))
 
 # Place button in the second column
 if col2.button('Clear Result'):
