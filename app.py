@@ -33,6 +33,7 @@ def custom_progress_bar(percentage):
     red_width = 100 - percentage
     
     html_code = f"""
+    <div>Hello World</div>
     <div style="width: 100%; height: 30px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
         <div style="width: {green_width}%; height: 100%; float: left; background-color: #00FF00;"></div>
         <div style="width: {red_width}%; height: 100%; float: left; background-color: #FF0000;"></div>
