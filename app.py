@@ -74,7 +74,7 @@ if col1.button('Predict'):
 
         result = 1 / (1 + np.exp(-res))
         st.header("Real"+"-"+str(round(result[0]*100))+"%")
-        st.header("Fake"+"-"+str(round(1-result[0]*100))+"%")
+        st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
         # custom_progress_bar(result)
 
 # Place button in the second column
