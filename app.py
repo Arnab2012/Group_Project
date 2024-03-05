@@ -28,7 +28,37 @@ model = pickle.load(open('model.pkl','rb'))
 
 #     return preprocessed_text
 
-
+def custom_progress_bar(percentage):
+    green_width = percentage
+    red_width = 100 - percentage
+    
+    html_code = f"""
+    <style>
+        .custom-bar-container {{
+            width: 100%;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }}
+        .custom-bar-green {{
+            background-color: green;
+            height: 100%;
+            float: left;
+        }}
+        .custom-bar-red {{
+            background-color: red;
+            height: 100%;
+            float: left;
+        }}
+    </style>
+    <div class="custom-bar-container">
+        <div class="custom-bar-green" style="width: {green_width}%"></div>
+        <div class="custom-bar-red" style="width: {red_width}%"></div>
+    </div>
+    """
+    st.write(html_code, unsafe_allow_html=True)
+    
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
     # prediction = model.predict([preprocessed_news_text])
@@ -59,10 +89,11 @@ if col1.button('Predict'):
         #     st.header("The news is Real")
 
         result = 1 / (1 + np.exp(-res))
-        st.header("Result is"+"-"+str(round(result[0]*100)))
+        # st.header("Result is"+"-"+str(round(result[0]*100)))
+        custom_progress_bar(result)
 
 # Place button in the second column
 if col2.button('Clear Result'):
-    input_news = st.text_input("Enter the News", value="", key="clear_text_area")
+    input_news = st.text_input("Enter the News", value="")
     st.header(" ")
     
