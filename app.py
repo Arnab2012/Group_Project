@@ -63,6 +63,6 @@ if col1.button('Predict'):
 
 # Place button in the second column
 if col2.button('Clear Result'):
-    input_news="Hello"
+    input_news = st.text_input("Enter the News", value="", key="clear_text_area")
     st.header(" ")
     
