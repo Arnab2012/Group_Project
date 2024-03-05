@@ -55,7 +55,7 @@ if col1.button('Predict'):
         # else:
         #     st.header("The news is Real")
 
-        st.header("Result is ")
+        st.header(result)
 
 # Place button in the second column
 if col2.button('Clear Result'):
