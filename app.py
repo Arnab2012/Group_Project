@@ -3,6 +3,7 @@ import string
 import pickle
 import streamlit as st
 import nltk
+import numpy as np
 # nltk.data.path.append("C:\\Users\\arnab\\AppData\\Roaming\\nltk_data\\tokenizers\\punkt\\PY3")
 from nltk.stem.porter import PorterStemmer
 from nltk import word_tokenize
