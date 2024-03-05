@@ -33,31 +33,13 @@ def custom_progress_bar(percentage):
     red_width = 100 - percentage
     
     html_code = f"""
-    <style>
-        .custom-bar-container {{
-            width: 100%;
-            height: 30px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-        }}
-        .custom-bar-green {{
-            background-color: #00FF00; /* Green color */
-            height: 100%;
-            float: left;
-        }}
-        .custom-bar-red {{
-            background-color: #FF0000; /* Red color */
-            height: 100%;
-            float: left;
-        }}
-    </style>
-    <div class="custom-bar-container">
-        <div class="custom-bar-green" style="width: {green_width}%"></div>
-        <div class="custom-bar-red" style="width: {red_width}%"></div>
+    <div style="width: 100%; height: 30px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+        <div style="width: {green_width}%; height: 100%; float: left; background-color: #00FF00;"></div>
+        <div style="width: {red_width}%; height: 100%; float: left; background-color: #FF0000;"></div>
     </div>
     """
     st.write(html_code, unsafe_allow_html=True)
+
 
     
 def predict_news_authenticity(news_text):
@@ -95,6 +77,5 @@ if col1.button('Predict'):
 
 # Place button in the second column
 if col2.button('Clear Result'):
-    input_news = st.text_input("Enter the News", value="")
     st.header(" ")
     
