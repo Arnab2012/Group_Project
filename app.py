@@ -42,12 +42,12 @@ def custom_progress_bar(percentage):
             overflow: hidden;
         }}
         .custom-bar-green {{
-            background-color: green;
+            background-color: #00FF00; /* Green color */
             height: 100%;
             float: left;
         }}
         .custom-bar-red {{
-            background-color: red;
+            background-color: #FF0000; /* Red color */
             height: 100%;
             float: left;
         }}
@@ -58,6 +58,7 @@ def custom_progress_bar(percentage):
     </div>
     """
     st.write(html_code, unsafe_allow_html=True)
+
     
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
