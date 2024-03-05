@@ -73,8 +73,9 @@ if col1.button('Predict'):
         #     st.header("The news is Real")
 
         result = 1 / (1 + np.exp(-res))
-        # st.header("Result is"+"-"+str(round(result[0]*100)))
-        custom_progress_bar(result)
+        st.header("Result is-->")
+        st.header("Real"+"-"+str(round(result[0]*100))+","+"Fake"+"-"+str(round(1-result[0]*100)))
+        # custom_progress_bar(result)
 
 # Place button in the second column
 if col2.button('Clear Result'):
