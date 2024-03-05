@@ -58,7 +58,7 @@ if col1.button('Predict'):
         #     st.header("The news is Real")
 
         result = 1 / (1 + np.exp(-res))
-        st.header("Result is"+str(round(result*100)))
+        st.header("Result is"+"-"+str(round(result*100)))
 
 # Place button in the second column
 if col2.button('Clear Result'):
