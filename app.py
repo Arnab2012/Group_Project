@@ -62,6 +62,8 @@ def predict_news_authenticity(news_text):
 st.title("Fake News Detection")
 
 input_news = st.text_area("Enter the News")
+if 'screen_width' not in st.session_state:
+    st.session_state.screen_width = 900  # Set default value
 
 # Create two columns for buttons
 col1, col2 = st.columns(2)
