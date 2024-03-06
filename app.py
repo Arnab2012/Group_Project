@@ -93,8 +93,8 @@ if col1.button('Predict'):
 
         result = 1 / (1 + np.exp(-res))
         st.header("Real"+"-"+str(round(result[0]*100))+"%")
-        # st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
-        st.write('<div style="text-align: right;">Fake</div>', unsafe_allow_html=True)
+        st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
+        # st.write('<div style="text-align: right;">Fake</div>', unsafe_allow_html=True)
 
         custom_progress_bar(result[0]*100)
 
