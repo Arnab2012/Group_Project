@@ -52,7 +52,7 @@ col1, col2 = st.columns(2)
 def prediction(real,fake):
     progress_placeholder = st.empty()
     temp = st.text("Calculating....")
-    temp.markdown('<div style="font-weight: bold; font-size: 40px;">Calculating....</div>', unsafe_allow_html=True)
+    temp.markdown('<div style="font-weight: bold; font-size: 35px;">Calculating....</div>', unsafe_allow_html=True)
  
     for i in range(1, real):
         html_code = f"""
@@ -87,8 +87,8 @@ def prediction(real,fake):
         
     temp.empty()
     html = f'<div style="display: flex; justify-content: space-between;">'
-    html += f'<div style="font-weight: bold; font-size: 40px;">Real - {real}%</div>'
-    html += f'<div style="font-weight: bold; font-size: 40px;">Fake - {fake}%</div>'
+    html += f'<div style="font-weight: bold; font-size: 35px;">Real - {real}%</div>'
+    html += f'<div style="font-weight: bold; font-size: 35px;">Fake - {fake}%</div>'
     html += f'</div>'
     st.markdown(html, unsafe_allow_html=True)
         
