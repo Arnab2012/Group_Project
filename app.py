@@ -32,20 +32,22 @@ def custom_progress_bar(percentage):
     green_width = percentage
     red_width = 100 - percentage
 
-    st.markdown(f'''
-    <div style="width: 100%; height: 30px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
-        <div style="width: {green_width}%; height: 100%; float: left; background-color: #00FF00;"></div>
-        <div style="width: {red_width}%; height: 100%; float: left; background-color: #FF0000;"></div>
-    </div>
-    ''', unsafe_allow_html=True)
-    # html_code = f"""
-    # <div>Hello World</div>
-    # <div style="width: 100%; height: 30px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
-    #     <div style="width: {green_width}%; height: 100%; float: left; background-color: #00FF00;"></div>
-    #     <div style="width: {red_width}%; height: 100%; float: left; background-color: #FF0000;"></div>
-    # </div>
-    # """
-    # st.write(html_code, unsafe_allow_html=True)
+    x = 70  # percentage for the first color
+    color1 = "blue"  # color for the first percentage
+    color2 = "red"   # color for the remaining percentage
+
+    # Calculate the width of each section based on the percentage
+    width1 = x
+    width2 = 100 - x
+
+    # Create the bar with two sections of different colors
+    st.markdown(
+        f'<div style="width: 100px; height: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
+        f'<div style="width: {width1}%; height: 100%; float: left; background-color: {color1};"></div>' +
+        f'<div style="width: {width2}%; height: 100%; float: left; background-color: {color2};"></div>' +
+        '</div>',
+        unsafe_allow_html=True
+    )
 
 # color = "blue"  # choose your color
 
@@ -54,22 +56,7 @@ def custom_progress_bar(percentage):
 #     f'<div style="background-color: {color}; width: 100px; height: 20px;"></div>',
 #     unsafe_allow_html=True
 # )
-x = 70  # percentage for the first color
-color1 = "blue"  # color for the first percentage
-color2 = "red"   # color for the remaining percentage
 
-# Calculate the width of each section based on the percentage
-width1 = x
-width2 = 100 - x
-
-# Create the bar with two sections of different colors
-st.markdown(
-    f'<div style="width: 100px; height: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
-    f'<div style="width: {width1}%; height: 100%; float: left; background-color: {color1};"></div>' +
-    f'<div style="width: {width2}%; height: 100%; float: left; background-color: {color2};"></div>' +
-    '</div>',
-    unsafe_allow_html=True
-)
     
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
