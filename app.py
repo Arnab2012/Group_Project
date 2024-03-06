@@ -29,14 +29,14 @@ model = pickle.load(open('model.pkl','rb'))
 #     return preprocessed_text
 
 def custom_progress_bar(percentage):
-    green_width = 70
-    red_width = 100 - 70
+    green_width = percentage
+    red_width = 100 - percentage
     
     color1 = "green"  
     color2 = "red"   
 
     st.markdown(
-        f'<div style="width: 1000px; height: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
+        f'<div style="width: 800px; height: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
         f'<div style="width: {green_width}%; height: 100%; float: left; background-color: {color1};"></div>' +
         f'<div style="width: {red_width}%; height: 100%; float: left; background-color: {color2};"></div>' +
         '</div>',
@@ -75,7 +75,7 @@ if col1.button('Predict'):
         result = 1 / (1 + np.exp(-res))
         st.header("Real"+"-"+str(round(result[0]*100))+"%")
         st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
-        custom_progress_bar(result)
+        custom_progress_bar(result[0]*100)
 
 # Place button in the second column
 if col2.button('Clear Result'):
