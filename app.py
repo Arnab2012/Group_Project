@@ -28,36 +28,6 @@ model = pickle.load(open('model.pkl','rb'))
 
 #     return preprocessed_text
 
-def custom_progress_bar(percentage):
-    green_width = percentage
-    red_width = 100 - percentage
-    
-    html_code = f"""
-    <style>
-        .custom-bar-container {{
-            width: 100%;
-            height: 30px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-        }}
-        .custom-bar-green {{
-            background-color: green;
-            height: 100%;
-            float: left;
-        }}
-        .custom-bar-red {{
-            background-color: red;
-            height: 100%;
-            float: left;
-        }}
-    </style>
-    <div class="custom-bar-container">
-        <div class="custom-bar-green" style="width: {green_width}%"></div>
-        <div class="custom-bar-red" style="width: {red_width}%"></div>
-    </div>
-    """
-    st.write(html_code, unsafe_allow_html=True)
  
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
@@ -82,7 +52,7 @@ col1, col2 = st.columns(2)
 def animate_prediction(real,fake):
     progress_placeholder = st.empty()
     for i in range(1, real):
-            
+        st.header("Calculating......")
         html_code = f"""
         <style>
             .custom-bar-container {{
@@ -102,7 +72,7 @@ def animate_prediction(real,fake):
                 background-color: red;
                 height: 100%;
                 float: left;
-                transition: width 0.5s; /* Add transition for smooth animation */
+                transition: width 0.5s; 
             }}
         </style>
         <div class="custom-bar-container">
@@ -111,8 +81,9 @@ def animate_prediction(real,fake):
         </div>
         """
         progress_placeholder.write(html_code, unsafe_allow_html=True)
+        time.sleep(0.1)  
         
-        time.sleep(0.1)  # Add a small delay to control the animation speed
+    st.header("Result -")
     html = f'<div style="display: flex; justify-content: space-between;">'
     html += f'<div style="font-weight: bold">Real - {real}%</div>'
     html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
@@ -136,14 +107,6 @@ if col1.button('Predict'):
 
         real = round(result[0] * 100)  
         fake = round(100 - real)  
-
-        # html = f'<div style="display: flex; justify-content: space-between;">'
-        # html += f'<div style="font-weight: bold">Real - {real}%</div>'
-        # html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
-        # html += f'</div>'
-        # st.markdown(html, unsafe_allow_html=True)
-
-        # # custom_progress_bar(result[0]*100)
         animate_prediction(real,fake) 
 
 # Place button in the second column
