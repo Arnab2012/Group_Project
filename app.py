@@ -32,13 +32,12 @@ def custom_progress_bar(percentage):
     green_width = percentage
     red_width = 100 - percentage
 
-    st.markdown(f'
-    <div>Hello World</div>
+    st.markdown(f'''
     <div style="width: 100%; height: 30px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
         <div style="width: {green_width}%; height: 100%; float: left; background-color: #00FF00;"></div>
         <div style="width: {red_width}%; height: 100%; float: left; background-color: #FF0000;"></div>
-    </div>'
-        unsafe_allow_html=True )
+    </div>
+    ''', unsafe_allow_html=True)
     # html_code = f"""
     # <div>Hello World</div>
     # <div style="width: 100%; height: 30px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
