@@ -48,6 +48,19 @@ st.markdown(
     f'<div style="background-color: {color}; width: 100px; height: 20px;"></div>',
     unsafe_allow_html=True
 )
+x = 70  # percentage for the first color
+color1 = "blue"  # color for the first percentage
+color2 = "red"   # color for the remaining percentage
+
+# Calculate the width of each section based on the percentage
+width1 = x
+width2 = 100 - x
+
+# Create the bar with two sections of different colors
+st.markdown(
+    f'<div style="background: linear-gradient(to right, {color1} {width1}%, {color2} {width1}%); width: 100px; height: 20px;"></div>',
+    unsafe_allow_html=True
+)
     
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
