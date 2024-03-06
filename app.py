@@ -51,8 +51,8 @@ col1, col2 = st.columns(2)
 
 def animate_prediction(real,fake):
     progress_placeholder = st.empty()
+    st.header("Calculating....")
     for i in range(1, real):
-        st.header("Calculating......")
         html_code = f"""
         <style>
             .custom-bar-container {{
@@ -83,6 +83,7 @@ def animate_prediction(real,fake):
         progress_placeholder.write(html_code, unsafe_allow_html=True)
         time.sleep(0.1)  
         
+    progress_placeholder.empty()
     st.header("Result -")
     html = f'<div style="display: flex; justify-content: space-between;">'
     html += f'<div style="font-weight: bold">Real - {real}%</div>'
