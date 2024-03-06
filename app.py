@@ -36,7 +36,7 @@ def custom_progress_bar(percentage):
     color2 = "red"   
 
     st.markdown(
-        f'<div style="width: 800px; height: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
+        f'<div style="width: 500px; height: 20px; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
         f'<div style="width: {green_width}%; height: 100%; float: left; background-color: {color1};"></div>' +
         f'<div style="width: {red_width}%; height: 100%; float: left; background-color: {color2};"></div>' +
         '</div>',
