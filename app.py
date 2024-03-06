@@ -79,6 +79,23 @@ if 'screen_width' not in st.session_state:
 # Create two columns for buttons
 col1, col2 = st.columns(2)
 
+def animate_prediction():
+    progress_placeholder = st.empty()
+
+    for i in range(1, 101):
+        real = i
+        fake = 100 - i
+        
+        # Update the progress bar and text dynamically
+        html = f'<div style="display: flex; justify-content: space-between;">'
+        html += f'<div style="font-weight: bold">Real - {real}%</div>'
+        html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
+        html += f'</div>'
+        progress_placeholder.markdown(html, unsafe_allow_html=True)
+        custom_progress_bar(i)
+        
+        time.sleep(0.1)  # Add a small delay to control the animation speed
+        
 # Place buttons in the first column
 if col1.button('Predict'):
     if not input_news:
@@ -94,16 +111,17 @@ if col1.button('Predict'):
         # st.header("Real"+"-"+str(round(result[0]*100))+"%")
         # st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
 
-        real = round(result[0] * 100)  
-        fake = round(100 - real)  
+        # real = round(result[0] * 100)  
+        # fake = round(100 - real)  
 
-        html = f'<div style="display: flex; justify-content: space-between;">'
-        html += f'<div style="font-weight: bold">Real - {real}%</div>'
-        html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
-        html += f'</div>'
-        st.markdown(html, unsafe_allow_html=True)
+        # html = f'<div style="display: flex; justify-content: space-between;">'
+        # html += f'<div style="font-weight: bold">Real - {real}%</div>'
+        # html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
+        # html += f'</div>'
+        # st.markdown(html, unsafe_allow_html=True)
 
-        custom_progress_bar(result[0]*100)
+        # custom_progress_bar(result[0]*100)
+        animate_prediction() 
 
 # Place button in the second column
 if col2.button('Clear Result'):
