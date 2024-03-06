@@ -29,8 +29,8 @@ model = pickle.load(open('model.pkl','rb'))
 #     return preprocessed_text
 
 def custom_progress_bar(percentage):
-    green_width = percentage
-    red_width = 100 - percentage
+    green_width = 70
+    red_width = 100 - 70
     
     color1 = "green"  
     color2 = "red"   
