@@ -98,8 +98,8 @@ if col1.button('Predict'):
         fake = round(100 - real, 2)  # Calculate percentage for "Fake"
 
         html = f'<div style="display: flex; justify-content: space-between;">'
-        html += f'<div><b>Real - {real}%</b></div>'
-        html += f'<div><b>Fake - {fake}%</b></div>'
+        html += f'<div style="font-weight: bold">Real - {real}%</div>'
+        html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
         html += f'</div>'
         st.markdown(html, unsafe_allow_html=True)
 
