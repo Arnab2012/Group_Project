@@ -35,8 +35,13 @@ def custom_progress_bar(percentage):
     color1 = "green"  
     color2 = "red"   
 
+    if st.session_state.screen_width >= 900:
+        bar_width = 900
+    else:
+        bar_width = st.session_state.screen_width
+    
     st.markdown(
-        f'<div style="width: 500px; height: 20px; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
+        f'<div style="width: {bar_width}px; height: 20px; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
         f'<div style="width: {green_width}%; height: 100%; float: left; background-color: {color1};"></div>' +
         f'<div style="width: {red_width}%; height: 100%; float: left; background-color: {color2};"></div>' +
         '</div>',
