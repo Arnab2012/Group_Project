@@ -80,19 +80,39 @@ if 'screen_width' not in st.session_state:
 col1, col2 = st.columns(2)
 
 def animate_prediction():
+    def animate_prediction():
     progress_placeholder = st.empty()
 
     for i in range(1, 101):
-        real = i
-        fake = 100 - i
-        
-        # Update the progress bar and text dynamically
-        html = f'<div style="display: flex; justify-content: space-between;">'
-        html += f'<div style="font-weight: bold">Real - {real}%</div>'
-        html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
-        html += f'</div>'
-        progress_placeholder.markdown(html, unsafe_allow_html=True)
-        custom_progress_bar(i)
+        # Update the progress bar dynamically
+        html_code = f"""
+        <style>
+            .custom-bar-container {{
+                width: 100%;
+                height: 30px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                overflow: hidden;
+            }}
+            .custom-bar-green {{
+                background-color: green;
+                height: 100%;
+                float: left;
+                transition: width 0.5s; /* Add transition for smooth animation */
+            }}
+            .custom-bar-red {{
+                background-color: red;
+                height: 100%;
+                float: left;
+                transition: width 0.5s; /* Add transition for smooth animation */
+            }}
+        </style>
+        <div class="custom-bar-container">
+            <div class="custom-bar-green" style="width: {i}%"></div>
+            <div class="custom-bar-red" style="width: {100 - i}%"></div>
+        </div>
+        """
+        progress_placeholder.write(html_code, unsafe_allow_html=True)
         
         time.sleep(0.1)  # Add a small delay to control the animation speed
         
