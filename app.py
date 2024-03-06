@@ -63,8 +63,8 @@ def custom_progress_bar(percentage):
     <div class="custom-bar-container">
         <div class="custom-bar-green" style="width: {green_width}%"></div>
         <div class="custom-bar-red" style="width: {red_width}%"></div>
-        <div class="percentage-text">Real={real_percentage}</div>
-        <div class="percentage-text" style="right: 0;">Fake={fake_percentage}</div>
+        <div class="percentage-text">Real={percentage}</div>
+        <div class="percentage-text" style="right: 0;">Fake={100-percentage}</div>
     </div>
     """
     st.write(html_code, unsafe_allow_html=True)
