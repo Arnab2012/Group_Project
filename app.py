@@ -40,7 +40,6 @@ def custom_progress_bar(percentage):
             border: 1px solid #ccc;
             border-radius: 5px;
             overflow: hidden;
-            position: relative; /* Added for positioning the text */
         }}
         .custom-bar-green {{
             background-color: green;
@@ -52,21 +51,13 @@ def custom_progress_bar(percentage):
             height: 100%;
             float: left;
         }}
-        .percentage-text {{
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 12px;
-            padding: 2px 5px;
-        }}
     </style>
     <div class="custom-bar-container">
         <div class="custom-bar-green" style="width: {green_width}%"></div>
         <div class="custom-bar-red" style="width: {red_width}%"></div>
-        <div class="percentage-text">Real={percentage}</div>
-        <div class="percentage-text" style="right: 0;">Fake={100-percentage}</div>
     </div>
     """
+    st.write(html_code, 
     st.write(html_code, unsafe_allow_html=True)
  
 def predict_news_authenticity(news_text):
@@ -102,7 +93,9 @@ if col1.button('Predict'):
 
         result = 1 / (1 + np.exp(-res))
         st.header("Real"+"-"+str(round(result[0]*100))+"%")
-        st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
+        # st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
+        st.write('<div style="text-align: right;">Fake</div>', unsafe_allow_html=True)
+
         custom_progress_bar(result[0]*100)
 
 # Place button in the second column
