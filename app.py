@@ -49,9 +49,11 @@ if 'screen_width' not in st.session_state:
 # Create two columns for buttons
 col1, col2 = st.columns(2)
 
-def animate_prediction(real,fake):
+def prediction(real,fake):
     progress_placeholder = st.empty()
-    calculation_text = st.text("Calculating....")
+    temp = st.text("Calculating....")
+    temp.markdown('<div style="font-weight: bold;">Calculating....</div>', unsafe_allow_html=True)
+ 
     for i in range(1, real):
         html_code = f"""
         <style>
@@ -83,7 +85,7 @@ def animate_prediction(real,fake):
         progress_placeholder.write(html_code, unsafe_allow_html=True)
         time.sleep(0.1)  
         
-    calculation_text.empty()
+    temp.empty()
     html = f'<div style="display: flex; justify-content: space-between;">'
     html += f'<div style="font-weight: bold">Real - {real}%</div>'
     html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
@@ -96,18 +98,13 @@ if col1.button('Predict'):
         st.header("Please enter a News first!!!")
     else:
         res = predict_news_authenticity(input_news)
-        # if result == "Fake":
-        #     st.header("The news is Fake")
-        # else:
-        #     st.header("The news is Real")
-
         result = 1 / (1 + np.exp(-res))
         # st.header("Real"+"-"+str(round(result[0]*100))+"%")
         # st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
 
         real = round(result[0] * 100)  
         fake = round(100 - real)  
-        animate_prediction(real,fake) 
+        prediction(real,fake) 
 
 # Place button in the second column
 if col2.button('Clear Result'):
