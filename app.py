@@ -29,24 +29,32 @@ model = pickle.load(open('model.pkl','rb'))
 #     return preprocessed_text
 
 def custom_progress_bar(percentage):
-    green_width = percentage
-    red_width = 100 - percentage
-    
-    color1 = "green"  
-    color2 = "red"   
-
-    if st.session_state.screen_width >= 900:
-        bar_width = 900
-    else:
-        bar_width = st.session_state.screen_width
-    
-    st.markdown(
-        f'<div style="width: {bar_width}px; height: 20px; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
-        f'<div style="width: {green_width}%; height: 100%; float: left; background-color: {color1};"></div>' +
-        f'<div style="width: {red_width}%; height: 100%; float: left; background-color: {color2};"></div>' +
-        '</div>',
-        unsafe_allow_html=True
-    )
+    html_code = f"""
+    <style>
+        .custom-bar-container {{
+            width: 100%;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }}
+        .custom-bar-green {{
+            background-color: green;
+            height: 100%;
+            float: left;
+        }}
+        .custom-bar-red {{
+            background-color: red;
+            height: 100%;
+            float: left;
+        }}
+    </style>
+    <div class="custom-bar-container">
+        <div class="custom-bar-green" style="width: {green_width}%"></div>
+        <div class="custom-bar-red" style="width: {red_width}%"></div>
+    </div>
+    """
+    st.write(html_code, unsafe_allow_html=True)
  
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
