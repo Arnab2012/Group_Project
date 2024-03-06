@@ -79,11 +79,10 @@ if 'screen_width' not in st.session_state:
 # Create two columns for buttons
 col1, col2 = st.columns(2)
 
-def animate_prediction():
+def animate_prediction(real,fake):
     progress_placeholder = st.empty()
-
-    for i in range(1, 101):
-        # Update the progress bar dynamically
+    for i in range(1, real):
+            
         html_code = f"""
         <style>
             .custom-bar-container {{
@@ -114,6 +113,11 @@ def animate_prediction():
         progress_placeholder.write(html_code, unsafe_allow_html=True)
         
         time.sleep(0.1)  # Add a small delay to control the animation speed
+    html = f'<div style="display: flex; justify-content: space-between;">'
+    html += f'<div style="font-weight: bold">Real - {real}%</div>'
+    html += f'<div style="font-weight: bold">Fake - {fake}%</div>'
+    html += f'</div>'
+    st.markdown(html, unsafe_allow_html=True)
         
 # Place buttons in the first column
 if col1.button('Predict'):
@@ -139,8 +143,8 @@ if col1.button('Predict'):
         # html += f'</div>'
         # st.markdown(html, unsafe_allow_html=True)
 
-        # custom_progress_bar(result[0]*100)
-        animate_prediction() 
+        # # custom_progress_bar(result[0]*100)
+        animate_prediction(real,fake) 
 
 # Place button in the second column
 if col2.button('Clear Result'):
