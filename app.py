@@ -80,7 +80,6 @@ if 'screen_width' not in st.session_state:
 col1, col2 = st.columns(2)
 
 def animate_prediction():
-    def animate_prediction():
     progress_placeholder = st.empty()
 
     for i in range(1, 101):
