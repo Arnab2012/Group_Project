@@ -41,7 +41,13 @@ def custom_progress_bar(percentage):
     """
     st.write(html_code, unsafe_allow_html=True)
 
+color = "blue"  # choose your color
 
+# Create a small rectangular bar with color
+st.markdown(
+    f'<div style="background-color: {color}; width: 100px; height: 20px;"></div>',
+    unsafe_allow_html=True
+)
     
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
