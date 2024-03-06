@@ -94,8 +94,8 @@ if col1.button('Predict'):
         # st.header("Real"+"-"+str(round(result[0]*100))+"%")
         # st.header("Fake"+"-"+str(round(100-result[0]*100))+"%")
 
-        real = round(result[0] * 100, 2)  # Calculate percentage for "Real"
-        fake = round(100 - real, 2)  # Calculate percentage for "Fake"
+        real = round(result[0] * 100)  
+        fake = round(100 - real)  
 
         html = f'<div style="display: flex; justify-content: space-between;">'
         html += f'<div style="font-weight: bold">Real - {real}%</div>'
