@@ -47,26 +47,29 @@ def custom_progress_bar(percentage):
     # """
     # st.write(html_code, unsafe_allow_html=True)
 
-color = "blue"  # choose your color
+# color = "blue"  # choose your color
 
-# Create a small rectangular bar with color
-st.markdown(
-    f'<div style="background-color: {color}; width: 100px; height: 20px;"></div>',
-    unsafe_allow_html=True
-)
-# x = 70  # percentage for the first color
-# color1 = "blue"  # color for the first percentage
-# color2 = "red"   # color for the remaining percentage
-
-# # Calculate the width of each section based on the percentage
-# width1 = x
-# width2 = 100 - x
-
-# # Create the bar with two sections of different colors
+# # Create a small rectangular bar with color
 # st.markdown(
-#     f'<div style="background: linear-gradient(to right, {color1} {width1}%, {color2} {width1}%); width: 100px; height: 20px;"></div>',
+#     f'<div style="background-color: {color}; width: 100px; height: 20px;"></div>',
 #     unsafe_allow_html=True
 # )
+x = 70  # percentage for the first color
+color1 = "blue"  # color for the first percentage
+color2 = "red"   # color for the remaining percentage
+
+# Calculate the width of each section based on the percentage
+width1 = x
+width2 = 100 - x
+
+# Create the bar with two sections of different colors
+st.markdown(
+    f'<div style="width: 100px; height: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">' +
+    f'<div style="width: {width1}%; height: 100%; float: left; background-color: {color1};"></div>' +
+    f'<div style="width: {width2}%; height: 100%; float: left; background-color: {color2};"></div>' +
+    '</div>',
+    unsafe_allow_html=True
+)
     
 def predict_news_authenticity(news_text):
     # preprocessed_news_text = news_text
