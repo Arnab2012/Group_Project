@@ -87,8 +87,8 @@ def prediction(real,fake):
         
     temp.empty()
     html = f'<div style="display: flex; justify-content: space-between;">'
-    html += f'<div style="font-weight: bold; font-size: 35px;">Real - {real}%</div>'
-    html += f'<div style="font-weight: bold; font-size: 35px;">Fake - {fake}%</div>'
+    html += f'<div style="font-weight: bold; font-size: 25px;">Real - {real}%</div>'
+    html += f'<div style="font-weight: bold; font-size: 25px;">Fake - {fake}%</div>'
     html += f'</div>'
     st.markdown(html, unsafe_allow_html=True)
         
