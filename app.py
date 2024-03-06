@@ -97,13 +97,8 @@ if col1.button('Predict'):
         real = round(result[0] * 100, 2)  # Calculate percentage for "Real"
         fake = round(100 - real, 2)  # Calculate percentage for "Fake"
 
-        # Construct HTML string with variable values inserted
-        html_real = f'<div style="text-align: left;"><b>Real - {real}%</b></div>'
-        html_fake = f'<div style="text-align: right;"><b>Fake - {fake}%</b></div>'
-
-        # Display HTML strings
-        st.markdown(html_real, unsafe_allow_html=True)
-        st.markdown(html_fake, unsafe_allow_html=True)
+        html = f'<div style="text-align: left;"><b>Real - {real}%</b></div><div style="text-align: right;"><b>Fake - {fake}%</b></div>'
+        st.markdown(html, unsafe_allow_html=True)
 
         custom_progress_bar(result[0]*100)
 
