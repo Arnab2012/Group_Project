@@ -35,15 +35,15 @@ def main():
             st.write('Prediction:', prediction)
 
             # Feedback section
-            feedback = st.selectbox('Was the prediction correct?', ('Yes', 'No'))
-            st.write("Feedback:", feedback)
+            feedback = st.radio('Was the prediction correct?', ('Yes', 'No'), index=None)
             if feedback == 'No':
                 st.header("Inside if")
                 correct_label = st.selectbox('Select the correct label:', ('Real', 'Fake'))
-                # Update training data and retrain model
-                updated_model = retrain_model(model, updated_data=news_text, correct_label=correct_label)
-                save_model(updated_model, updated_model_path)  # Save the updated model
-                model = load_model(updated_model_path)  # Load the updated model for subsequent predictions
+                if st.button('Submit Feedback'):
+                    # Update training data and retrain model
+                    updated_model = retrain_model(model, updated_data=news_text, correct_label=correct_label)
+                    save_model(updated_model, updated_model_path)  # Save the updated model
+                    model = load_model(updated_model_path)  # Load the updated model for subsequent predictions
 
 if __name__ == '__main__':
     main()
