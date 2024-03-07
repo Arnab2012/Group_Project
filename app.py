@@ -35,7 +35,7 @@ def main():
             st.write('Prediction:', prediction)
 
             # Feedback section
-            feedback = st.radio('Was the prediction correct?', ('Yes', 'No'),index=None)
+            feedback = st.selectbox('Was the prediction correct?', ('Yes', 'No'))
             st.write("Feedback:", feedback)
             if feedback == 'No':
                 st.header("Inside if")
