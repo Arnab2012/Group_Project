@@ -44,6 +44,9 @@ def main():
                     updated_model = retrain_model(model, updated_data=news_text, correct_label=correct_label)
                     save_model(updated_model, updated_model_path)  # Save the updated model
                     model = load_model(updated_model_path)  # Load the updated model for subsequent predictions
+            elif feedback == 'Yes':
+                st.write("Feedback received: Yes")
+                # Continue with prediction without retraining
 
 if __name__ == '__main__':
     main()
