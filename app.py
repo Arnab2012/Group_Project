@@ -21,11 +21,11 @@ def retrain_model(model, updated_data, correct_label):
     return updated_model
 
 # Streamlit app
+updated_model_path = 'model.pkl'  # Path to the initial model
 def main():
     st.title('Fake News Detection System')
 
-    model_path = 'model.pkl'  # Path to the model file
-    model = load_model(model_path)  # Load the initial model
+    model = load_model(updated_model_path)  # Load the initial model
 
     # Input field for news text
     news_text = st.text_area('Enter the news text:')
@@ -43,9 +43,9 @@ def main():
             if feedback == 'No':
                 correct_label = st.selectbox('Select the correct label:', ('Real', 'Fake'))
                 # Update training data and retrain model
-                # For now, we will assume model is retrained with updated data
                 updated_model = retrain_model(model, updated_data=news_text, correct_label=correct_label)
-                save_model(updated_model, model_path)  # Save the updated model
+                save_model(updated_model, updated_model_path)  # Save the updated model
+                model = load_model(updated_model_path)  # Load the updated model for subsequent predictions
 
 if __name__ == '__main__':
     main()
