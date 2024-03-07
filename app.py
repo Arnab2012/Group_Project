@@ -93,7 +93,7 @@ def prediction(real,fake):
 # Place buttons in the first column
 if col1.button('Predict'):
     if not input_news:
-        st.header("Please enter a News first!!!")
+        st.warning("Please enter a News first!!!")
     else:
         res = predict_news_authenticity(input_news)
         result = 1 / (1 + np.exp(-res))
