@@ -36,6 +36,7 @@ def main():
 
             # Feedback section
             feedback = st.radio('Was the prediction correct?', ('Yes', 'No'))
+            st.write("Feedback:", feedback)
             if feedback == 'No':
                 st.header("Inside if")
                 correct_label = st.selectbox('Select the correct label:', ('Real', 'Fake'))
